@@ -5,6 +5,8 @@
  * Description: Displays lower and upper case letters
  *
  * i: stores characters
+ *
+ * Return: Always returns 0
  */
 
 int main(void)
@@ -23,5 +25,6 @@ int main(void)
 		putchar(i);
 		i++;
 	}
-	putchar(10)
+	putchar(10);
+	return (0);
 }
