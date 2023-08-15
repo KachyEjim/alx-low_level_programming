@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_alphabet - Entry pointt
+ * print_alphabet_x10 - Entry pointt
  * description: prints lowercase letters
  *
  * i: stores the letters
