@@ -5,7 +5,7 @@
  * description: Checks if input is lowercase
  *
  * @character: character to be checked
- * 
+ *
  * Return: returns 1 if c is lower reurns 0 otherwise
  */
 
