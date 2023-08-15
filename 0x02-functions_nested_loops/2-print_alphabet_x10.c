@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- * print_alphabet - Prints lowercase char
+ * print_alphabet - Entry pointt
+ * description: prints lowercase letters
  *
  * i: stores the letters
  * count: number of time to display alp
@@ -11,11 +12,12 @@
 
 void print_alphabet_x10(void)
 {
-	int i = 'a';
+	int i;
 	int count = 0;
 
 	while (count < 10)
 	{
+		i = 'a';
 		while (i <= 'z')
 		{
 			_putchar(i);
