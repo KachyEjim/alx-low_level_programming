@@ -23,6 +23,6 @@ int print_sign(int i)
 		return (0);
 	}
 
-	_putchar('-')
+	_putchar('-');
 	return (-1);
 }
