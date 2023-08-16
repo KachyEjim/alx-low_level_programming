@@ -13,22 +13,22 @@
 
 int main(void)
 {
-	int sum = 0;
-	int first = 1;
-	int second = 2;
-	int next;
+	unsigned long int sum = 0;
+	unsigned long int first = 1;
+	unsigned long int second = 2;
+	unsigned long int next;
 
 	while (second <= 4000000)
 	{
 		if (second % 2 == 0)
 			sum += second;
 
-			next = first + second;
-			first = second;
-			second = next;
+		next = first + second;
+		first = second;
+		second = next;
 	}
 
-	printf("%d\n", sum);
+	printf("%lu\n", sum);
 
 	return (0);
 }
