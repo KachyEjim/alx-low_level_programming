@@ -32,18 +32,24 @@ void print_times_table(int n)
 			else
 			{
 				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
 
 				if (result < 10)
 				{
 					_putchar(' ');
+					_putchar(' ');
+					_putchar(' ');
 					_putchar('0' + result);
+				}
+				else if (result > 9 && result < 100)
+				{
+                                        _putchar(' ');
+					_putchar('0' + result / 10);
+					_putchar('0' + result % 10);
 				}
 				else
 				{
-					_putchar('0' + result / 10);
-					_putchar('0' + result % 10);
+                                        _putchar('0' + result / 10);
+                                        _putchar('0' + result % 10);
 				}
 			}
 		}
