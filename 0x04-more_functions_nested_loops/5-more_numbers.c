@@ -15,6 +15,7 @@ void more_numbers(void)
 	while (i < 10)
 	{
 		int digit = 0;
+
 		while (digit <= 14)
 		{
 			if (digit >= 10)

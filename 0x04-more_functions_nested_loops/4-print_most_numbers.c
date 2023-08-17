@@ -15,7 +15,7 @@ void print_most_numbers(void)
 	{
 		if (digit != '2' && digit != '4')
 			_putchar(digit);
-		
+
 		digit++;
 	}
 	_putchar('\n');
