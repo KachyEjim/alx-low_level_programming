@@ -3,16 +3,16 @@
 #include <time.h>
 
 /**
- * main - Entry point
+ * positive_or_negative - Entry point
  *
  * Description: Generates a  ran num
- * n: Stores the generated ran num
+ * @n: Stores the generated ran num
  *
  * Return: Always 0 (SUCCESS)
 */
-int main(void)
+int positive_or_negative(int n)
 {
-	int n;
+	
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
