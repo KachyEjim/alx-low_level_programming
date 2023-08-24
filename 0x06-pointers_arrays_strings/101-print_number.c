@@ -28,7 +28,7 @@ void print_number(int n)
 		n  = n * -1;
 		temp = n;
 	}
-	
+
 	for (i = 0, count = 0; temp > 0; i++)
 	{
 		temp /= 10;
