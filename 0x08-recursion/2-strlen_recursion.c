@@ -5,10 +5,9 @@
  *
  * @s: string to be size checked
  *
- * Returns: returns count
+ * Return: returns count
  *
  */
-
 
 int _strlen_recursion(char *s)
 {
