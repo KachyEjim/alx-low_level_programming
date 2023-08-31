@@ -8,7 +8,7 @@
  * @x: s1 string index
  * @y: s2 string index
  *
- * Return: 1 if s1 and s2 can be considered 
+ * Return: 1 if s1 and s2 can be considered
  * indentical returns 0 otherwise.
  *
  */
@@ -32,8 +32,8 @@ int checker(char *s1, char *s2, int x, int y)
 /**
  * wildcmp - checks if strings could be considered identical
  *
- * @s: first string.
- * @s: second string.
+ * @s1: first string.
+ * @s2: second string.
  *
  * Return: 1 if are considered identical.
  *
@@ -41,7 +41,7 @@ int checker(char *s1, char *s2, int x, int y)
 
 int wildcmp(char *s1, char *s2)
 {
-	int x = 0; 
+	int x = 0;
 	int y = 0;
 
 	return (checker(s1, s2, x, y));
