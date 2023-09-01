@@ -15,8 +15,7 @@
 int main(int argc, char *argv[])
 {
 	unsigned int count = 0;
-	int i = 0;
-	int cent;
+	int i, cent = 0;
 	int change[] = {25, 10, 5, 2};
 
 	if (argc != 2)
@@ -24,15 +23,12 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-
 	cent = atoi(argv[1]);
-
 	if (cent < 0)
 	{
 		printf("0\n");
 		return (0);
 	}
-
 	else
 	{
 		while (cent > 1)
@@ -53,10 +49,7 @@ int main(int argc, char *argv[])
 
 		if (cent == 1)
 			count++;
-
 	}
-	printf ("%u\n", count);
+	printf("%u\n", count);
 	return (0);
-
-
 }
