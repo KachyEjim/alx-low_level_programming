@@ -35,13 +35,17 @@ int main(int argc, char *argv[])
 
 	else
 	{
-		while (cent >= change[i])
+		while (cent > 1)
 		{
-			count += cent / change[i];
-			cent %= change[i];
-
 			if (cent < change[i])
 				i++;
+
+			else
+			{
+				count += cent / change[i];
+				cent %= change[i];
+			}
+
 
 			if (i == sizeof(change) / sizeof(change[0]))
 				break;
