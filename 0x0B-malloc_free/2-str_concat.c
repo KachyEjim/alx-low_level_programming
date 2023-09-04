@@ -16,8 +16,6 @@ char *str_concat(char *s1, char *s2)
 	char *concat;
 	int t1, t2, i, j = 0;
 
-	if (s1 == 0 || s2 == 0)
-		return (0);
 
 	for (t1 = 0; s1[t1]; t1++)
 		;
