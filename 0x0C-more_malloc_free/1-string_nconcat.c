@@ -38,6 +38,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	len++;
 
 	ptr = allo_space(len);
+	if (ptr == 0)
+		return (0);
 
 	for (i = 0; s1[i]; i++)
 		ptr[i] = s1[i];
