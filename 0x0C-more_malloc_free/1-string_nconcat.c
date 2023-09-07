@@ -1,23 +1,28 @@
 #include <stdlib.h>
 #include "main.h"
 
-
-
-
-
-
-
+/**
+ * string_nconcat - concatenates two strings.
+ *
+ * @s1: first string
+ * @s2: second string
+ *
+ * @n: Anount to copy
+ *
+ * Return: returns a pointer
+ *
+ */
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int unsigned i = 0, j = 0;
+	unsigned int i = 0, j = 0;
 	unsigned int len = 0;
 
 	char *ptr;
 
 	if (s1 == NULL)
 		s1 = "";
-	
+
 	if (s2 == NULL)
 		s2 = "";
 
@@ -47,6 +52,15 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	return (ptr);
 
 }
+
+/**
+ * allo_space - used to allocate space
+ *
+ * @size: size to be allocated
+ *
+ * Return: returns a pointer
+ *
+ */
 
 void *allo_space(unsigned int size)
 {
