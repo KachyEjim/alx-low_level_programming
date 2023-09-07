@@ -23,11 +23,10 @@ int *array_range(int min, int max)
 
 	if (ptr == 0)
 		return (0);
-	
+
 	for (i = 0; i < (max - min + 1); i++)
 	{
 		ptr[i] = i + min;
-		
 	}
 	return (ptr);
 }
