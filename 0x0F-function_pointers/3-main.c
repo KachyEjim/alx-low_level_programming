@@ -32,6 +32,11 @@ int main(int argc, char **argv)
 	num2 = atoi(argv[3]);
 
 	ptr = get_op_func(operator);
+	if (!ptr)
+	{
+		printf("Error\n");
+		exit(99);
+	}
 
 	result = ptr(num1, num2);
 	printf("%d\n", result);
