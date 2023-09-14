@@ -3,7 +3,7 @@
 #include <stdarg.h>
 
 /**
- * print_strings - Prints strings passed to the function 
+ * print_strings - Prints strings passed to the function
  *
  * @separator: A string that is used to separate strings
  * @n: number of elements pasede
