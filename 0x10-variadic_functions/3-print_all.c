@@ -9,11 +9,11 @@
 
 void print_all(const char * const format, ...)
 {
-	int i, int flag, char *str, va_list everything;
+	int i = 0, flag;
+	char *str;
+	va_list everything;
 
 	va_start(everything, format);
-
-	i = 0;
 	while (format != NULL && format[i] != '\0')
 	{
 		switch (format[i])
