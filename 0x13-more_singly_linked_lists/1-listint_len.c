@@ -14,7 +14,7 @@
 
 size_t listint_len(const listint_t *h)
 {
-	const listint *temp;
+	const listint_t *temp;
 	size_t n = 0;
 
 	temp = h;
