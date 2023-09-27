@@ -13,7 +13,8 @@
  *
  */
 
-const listint_t **_realloc(const listint_t **list, size_t size, const listint_t *new)
+const listint_t **_realloc(const listint_t **list,
+		size_t size, const listint_t *new)
 {
 	const listint_t **newlist;
 	size_t i;
