@@ -13,7 +13,7 @@
  *
  */
 
-const listint_t **_r(const listint_t **list, size_t size, const listint_t *new)
+const listint_t **_realloc(const listint_t **list, size_t size, const listint_t *new)
 {
 	const listint_t **newlist;
 	size_t i;
@@ -57,10 +57,11 @@ size_t print_listint_safe(const listint_t *head)
 			}
 		}
 		num++;
-		list = _r(list, num, head);
+		list = _realloc(list, num, head);
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
 	}
+
 	free(list);
 	return (num);
 }

@@ -14,7 +14,7 @@
  *
  */
 
-listint_t **_ra(listint_t **list, size_t size, listint_t *new)
+listint_t **_ralloc(listint_t **list, size_t size, listint_t *new)
 {
 	listint_t **newlist;
 	size_t i = 0;
@@ -62,7 +62,7 @@ size_t free_listint_safe(listint_t **head)
 		}
 
 		num++;
-		list = _ra(list, num, *head);
+		list = _ralloc(list, num, *head);
 		next = (*head)->next;
 		free(*head);
 		*head = next;
