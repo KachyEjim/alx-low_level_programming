@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * _r - reallocates memory for an array of pointers
+ * _realloc - reallocates memory for an array of pointers
  * to the nodes in a linked list
  *
  * @list: the old list to append
