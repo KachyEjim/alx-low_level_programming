@@ -89,17 +89,17 @@ void error97(int n)
  * error98 - checks that file_from exists and can be read
  *
  * @check: checks if true of false
- * @fd: file_from name
+ * @file: copy_from name
  * @cpfrom: file descriptor of file_from, or -1
  * @cpto: file descriptor of file_to, or -1
  *
  */
 
-void error98(ssize_t check, char *fd, int cpfrom, int cpto)
+void error98(ssize_t check, char *file, int cpfrom, int cpto)
 {
 	if (check == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from fd %s\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
 		if (cpfrom != -1)
 			close(cpfrom);
 		if (cpto != -1)
@@ -120,7 +120,7 @@ void error100(int check, int file)
 {
 	if (check == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close file %d\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file);
 		exit(100);
 	}
 }
