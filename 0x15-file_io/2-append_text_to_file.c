@@ -21,10 +21,10 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (file == -1)
 		return (-1);
 
-	while (text_content(len) != NULL)
+	while (text_content[len])
 		len++;
 
-	if (text_content != NULL)
+	if (text_content)
 		wfile = write(file, text_content, len);
 
 	close(file);
