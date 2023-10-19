@@ -5,12 +5,12 @@
 /**
  * main - Displays the information contained in the
  *        ELF header at the start of an ELF file.
- * 
- * @argc: The number of args
+ *
+ * @ac: The number of args
  * @argv: An array of pointers to the args.
  *
  * Return: 0 on success
- * 
+ *
  */
 
 int main(int ac, char *argv[])
@@ -19,7 +19,6 @@ int main(int ac, char *argv[])
 	int ofile, rfile;
 
 	(void)ac;
-
 	ofile = open(argv[1], O_RDONLY);
 	if (ofile == -1)
 	{
@@ -41,7 +40,6 @@ int main(int ac, char *argv[])
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
 	}
-
 	checkElf(h->e_ident);
 	printf("ELF Header:\n");
 	printMagic(h->e_ident);
@@ -52,7 +50,6 @@ int main(int ac, char *argv[])
 	printAbi(h->e_ident);
 	printType(h->e_type, h->e_ident);
 	printEntry(h->e_entry, h->e_ident);
-
 	free(h);
 	closeElf(ofile);
 	return (0);
@@ -60,8 +57,8 @@ int main(int ac, char *argv[])
 
 
 /**
- * check_elf - Checks if a file is an ELF file.
- * 
+ * checkElf - Checks if a file is an ELF file.
+ *
  * @eIdent: A pointer to an array containing the ELF magic numbers
  *
  */
@@ -85,7 +82,7 @@ void checkElf(unsigned char *eIdent)
 }
 /**
  * printMagic - Prints the magic numbers of an ELF header
- * 
+ *
  * @e: A pointer to an array containing the ELF magic numbers.
  *
  */
@@ -111,9 +108,9 @@ void printMagic(unsigned char *e)
 
 /**
  * printClass - Prints the class of an ELF header.
- * 
+ *
  * @m: A pointer to an array containing the ELF class.
- * 
+ *
  */
 
 void printClass(unsigned char *m)
@@ -138,9 +135,9 @@ void printClass(unsigned char *m)
 
 /**
  * printData - Prints the data of an ELF header.
- * 
+ *
  * @e: A pointer to an array containing the ELF class.
- * 
+ *
  */
 
 void printData(unsigned char *e)
@@ -165,9 +162,9 @@ void printData(unsigned char *e)
 
 /**
  * printVersion - Prints the version of an ELF header.
- * 
+ *
  * @e: A pointer to an array containing the ELF version.
- * 
+ *
  */
 
 void printVersion(unsigned char *e)
@@ -188,9 +185,9 @@ void printVersion(unsigned char *e)
 
 /**
  * printOsabi - Prints the OS/ABI of an ELF header.
- * 
+ *
  * @e: A pointer to an array containing the ELF version.
- * 
+ *
  */
 
 void printOsabi(unsigned char *e)
@@ -236,9 +233,9 @@ void printOsabi(unsigned char *e)
 
 /**
  * printAbi - Prints the ABI version of an ELF header.
- * 
+ *
  * @e: A pointer to an array containing the ELF ABI version.
- * 
+ *
  */
 
 void printAbi(unsigned char *e)
@@ -249,11 +246,12 @@ void printAbi(unsigned char *e)
 
 /**
  * printType - Prints the type of an ELF header.
- * 
+ *
  * @type: The ELF type.
  * @e_ident: A pointer to an array containing the ELF class.
- * 
+ *
  */
+
 
 void printType(unsigned int type, unsigned char *e_ident)
 {
@@ -285,11 +283,11 @@ void printType(unsigned int type, unsigned char *e_ident)
 }
 
 /**
- * print_entry - Prints the entry point of an ELF header.
- * 
+ * printEntry - Prints the entry point of an ELF header.
+ *
  * @entry: The address of the ELF entry point.
  * @ident: A pointer to an array containing the ELF class.
- * 
+ *
  */
 
 void printEntry(unsigned long int entry, unsigned char *ident)
@@ -312,9 +310,9 @@ void printEntry(unsigned long int entry, unsigned char *ident)
 
 /**
  * closeElf - Closes an ELF file.
- * 
+ *
  * @elf: The file descriptor of the ELF file.
- * 
+ *
  */
 
 void closeElf(int elf)

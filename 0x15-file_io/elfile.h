@@ -25,4 +25,4 @@ void printEntry(unsigned long int entry, unsigned char *e);
 void closeElf(int elfile);
 
 
-#endif
+#endif /* ELFILE_H */
