@@ -60,3 +60,18 @@ int div(int a, int b)
 {
 	return (a / b);
 }
+
+/**
+ * mod - performs modulus on two digits
+ *
+ * @a: first digit
+ * @b: second digit
+ *
+ * Return: Returns the result of the operation.
+ *
+ */
+
+int mod(int a, int b)
+{
+	return (a % b);
+}
