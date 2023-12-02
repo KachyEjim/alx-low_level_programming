@@ -200,7 +200,7 @@ void shash_table_delete(shash_table_t *ht)
 /**
  * mrfree - used to free
  *
- * s1: first argument
+ * @s1: first argument
  *
  * Return: Returns 0
 */
@@ -214,8 +214,8 @@ int mrfree(char *s)
 /**
  * mrfree2 - used to free
  *
- * s1: first argument
- * s2 second argument
+ * @s1: first argument
+ * @s2 second argument
  *
  * Return: Returns 0
 */
