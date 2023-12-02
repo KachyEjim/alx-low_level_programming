@@ -197,11 +197,28 @@ void shash_table_delete(shash_table_t *ht)
 	free(head);
 }
 
+/**
+ * mrfree - used to free
+ *
+ * s1: first argument
+ *
+ * Return: Returns 0
+*/
+
 int mrfree(char *s)
 {
 	free(s);
 	return (0);
 }
+
+/**
+ * mrfree2 - used to free
+ *
+ * s1: first argument
+ * s2 second argument
+ *
+ * Return: Returns 0
+*/
 
 int mrfree2(shash_node_t *s1, char *s2)
 {
