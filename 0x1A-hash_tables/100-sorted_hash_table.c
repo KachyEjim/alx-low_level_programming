@@ -3,6 +3,7 @@
 
 /**
  * shash_table_create - Creates a sorted hash table.
+ *
  * @size: The size of new sorted hash table.
  *
  * Return: If an error occurs - NULL.
