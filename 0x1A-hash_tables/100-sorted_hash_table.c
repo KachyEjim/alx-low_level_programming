@@ -128,26 +128,21 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
+	shash_node_t *node;
 	unsigned long int index;
-	hash_node_t *temp;
 
 	if (ht == NULL || key == NULL || *key == '\0')
 		return (NULL);
 
 	index = key_index((const unsigned char *)key, ht->size);
-
-	if (ht->array[index] == NULL)
+	if (index >= ht->size)
 		return (NULL);
 
-	temp = ht->array[index];
-	while (temp != NULL)
-	{
-		if (strcmp(temp->key, key) == 0)
-			return (temp->value);
-		temp = temp->next;
-	}
-	return (NULL);
+	node = ht->shead;
+	while (node != NULL && strcmp(node->key, key) != 0)
+		node = node->snext;
 
+	return ((node == NULL) ? NULL : node->value);
 }
 
 /**
@@ -159,24 +154,19 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 
 void shash_table_print(const shash_table_t *ht)
 {
-	unsigned long int index;
-	shash_node_t *temp;
-	int p = 0;
+	shash_node_t *node;
 
-	if (ht == NULL || ht->array == NULL)
+	if (ht == NULL)
 		return;
+
+	node = ht->shead;
 	printf("{");
-	for (index = 0; index < ht->size; index++)
+	while (node != NULL)
 	{
-		temp = ht->array[index];
-		while (temp != NULL)
-		{
-			if (p == 1)
-				printf(", ");
-			printf("'%s': '%s'", temp->key, temp->value);
-			p = 1;
-			temp = temp->next;
-		}
+		printf("'%s': '%s'", node->key, node->value);
+		node = node->snext;
+		if (node != NULL)
+			printf(", ");
 	}
 	printf("}\n");
 }
@@ -216,24 +206,22 @@ void shash_table_print_rev(const shash_table_t *ht)
 
 void shash_table_delete(shash_table_t *ht)
 {
-	shash_node_t *t;
-	unsigned long int index;
+	shash_table_t *head = ht;
+	shash_node_t *node, *tmp;
 
-	if (ht == NULL || ht->size == 0 || ht->array == NULL)
+	if (ht == NULL)
 		return;
 
-	for (index = 0; index < ht->size; index++)
+	node = ht->shead;
+	while (node)
 	{
-		while (ht->array[index] != NULL)
-		{
-			t = ht->array[index]->next;
-			free(ht->array[index]->value);
-			free(ht->array[index]->key);
-			free(ht->array[index]);
-			ht->array[index] = t;
-		}
-
+		tmp = node->snext;
+		free(node->key);
+		free(node->value);
+		free(node);
+		node = tmp;
 	}
-	free(ht->array);
-	free(ht);
+
+	free(head->array);
+	free(head);
 }
