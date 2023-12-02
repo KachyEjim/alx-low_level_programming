@@ -1,5 +1,6 @@
 #include "hash_tables.h"
 
+
 /**
  * shash_table_create - Creates a sorted hash table.
  * @size: The size of new sorted hash table.
@@ -42,76 +43,46 @@ shash_table_t *shash_table_create(unsigned long int size)
 
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-	shash_node_t *new, *tmp;
-	char *value_copy;
+	shash_node_t *n, *tmp;
+	char *v;
 	unsigned long int index;
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
-
-	value_copy = strdup(value);
-	if (value_copy == NULL)
+	v = strdup(value);
+	if (v == NULL)
 		return (0);
-
-	index = key_index((const unsigned char *)key, ht->size);
-	tmp = ht->shead;
+	index = key_index((const unsigned char *)key, ht->size), tmp = ht->shead;
 	while (tmp)
 	{
 		if (strcmp(tmp->key, key) == 0)
 		{
-			free(tmp->value);
-			tmp->value = value_copy;
+			free(tmp->value), tmp->value = v;
 			return (1);
-		}
-		tmp = tmp->snext;
-	}
-
-	new = malloc(sizeof(shash_node_t));
-	if (new == NULL)
-	{
-		free(value_copy);
-		return (0);
-	}
-	new->key = strdup(key);
-	if (new->key == NULL)
-	{
-		free(value_copy);
-		free(new);
-		return (0);
-	}
-	new->value = value_copy;
-	new->next = ht->array[index];
-	ht->array[index] = new;
-
+		} tmp = tmp->snext;
+	} n = malloc(sizeof(shash_node_t));
+	if (n == NULL)
+		return (mrfree(v));
+	n->key = strdup(key);
+	if (n->key == NULL)
+		return (mrfree2(n, v));
+	n->value = v, n->next = ht->array[index], ht->array[index] = n;
 	if (ht->shead == NULL)
-	{
-		new->sprev = NULL;
-		new->snext = NULL;
-		ht->shead = new;
-		ht->stail = new;
-	}
+		n->sprev = NULL, n->snext = NULL, ht->shead = n, ht->stail = n;
 	else if (strcmp(ht->shead->key, key) > 0)
-	{
-		new->sprev = NULL;
-		new->snext = ht->shead;
-		ht->shead->sprev = new;
-		ht->shead = new;
-	}
+		n->sprev = NULL, n->snext = ht->shead, ht->shead->sprev = n, ht->shead = n;
 	else
 	{
 		tmp = ht->shead;
 		while (tmp->snext != NULL && strcmp(tmp->snext->key, key) < 0)
 			tmp = tmp->snext;
-		new->sprev = tmp;
-		new->snext = tmp->snext;
+		n->sprev = tmp, n->snext = tmp->snext;
 		if (tmp->snext == NULL)
-			ht->stail = new;
+			ht->stail = n;
 		else
-			tmp->snext->sprev = new;
-		tmp->snext = new;
-	}
-
-	return (1);
+			tmp->snext->sprev = n;
+		tmp->snext = n;
+	} return (1);
 }
 
 /**
@@ -224,4 +195,17 @@ void shash_table_delete(shash_table_t *ht)
 
 	free(head->array);
 	free(head);
+}
+
+int mrfree(char *s)
+{
+	free(s);
+	return (0);
+}
+
+int mrfree2(shash_node_t *s1, char *s2)
+{
+	free(s1);
+	free(s2);
+	return (0);
 }
